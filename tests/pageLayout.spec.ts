@@ -1,31 +1,24 @@
 import { test, expect } from "../fixtures/layout-matchers";
+import { PlaywrightDevPage } from "../pages/playwright-dev-page";
 
 test("Page layout test - element left of other element", async ({ page }) => {
-  await page.goto("https://playwright.dev/");
-  await page.getByRole("link", { name: "Get started" }).click();
-  const writingTestsNavLink = page.getByRole("link", {
-    name: "Writing tests",
-    exact: true,
-  });
-  const installationPageHeader = page.getByRole("heading", {
-    name: "Installation",
-  });
+  const playwrightDev = new PlaywrightDevPage(page);
+  await playwrightDev.goto();
+  await playwrightDev.getStarted();
 
   // nav link is horizontally left of the page header
-  await expect(writingTestsNavLink).toBeLeftOf(installationPageHeader);
+  await expect(playwrightDev.writingTestsNavLink).toBeLeftOf(
+    playwrightDev.installationPageHeader,
+  );
 });
 
 test("Page layout test - element above other element", async ({ page }) => {
-  await page.goto("https://playwright.dev/");
-  await page.getByRole("link", { name: "Get started" }).click();
-  const writingTestsNavLink = page.getByRole("link", {
-    name: "Writing tests",
-    exact: true,
-  });
-  const supportedLanguagesNavLink = page.getByRole("link", {
-    name: "Supported languages",
-  });
+  const playwrightDev = new PlaywrightDevPage(page);
+  await playwrightDev.goto();
+  await playwrightDev.getStarted();
 
   // nav links are vertically positioned
-  await expect(writingTestsNavLink).toBeAbove(supportedLanguagesNavLink);
+  await expect(playwrightDev.writingTestsNavLink).toBeAbove(
+    playwrightDev.supportedLanguagesNavLink,
+  );
 });
