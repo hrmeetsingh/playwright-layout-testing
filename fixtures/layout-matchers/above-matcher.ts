@@ -34,7 +34,7 @@ export const expect = baseExpect.extend({
           "\n\n" +
           `Locator1: ${referenceLocator}\n` +
           `Locator2: ${comparandLocator}\n` +
-          `Expected: ${this.isNot ? "not" : ""}${this.utils.printExpected(referenceTopOffset)}\n` +
+          `Expected: '${this.isNot ? referenceLocator + "' to not be above '" + comparandLocator : ""}'\n` +
           (matcherResult
             ? `Received: ${this.utils.printReceived(locatorTopOffset)}`
             : "")
