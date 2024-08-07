@@ -9,6 +9,10 @@ export class PlaywrightDevPage {
   readonly writingTestsNavLink: Locator;
   readonly installationPageHeader: Locator;
   readonly supportedLanguagesNavLink: Locator;
+  readonly gettingStartedNavLink: Locator;
+  readonly installationNavSubLink: Locator;
+  readonly breadcrumbGettingStartedLink: Locator;
+  readonly breadcrumbInstallationLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -32,6 +36,18 @@ export class PlaywrightDevPage {
         hasText: "Page Object Model",
       });
     this.tocList = page.locator("article div.markdown ul > li > a");
+    this.gettingStartedNavLink = page.getByRole("button", {
+      name: "Getting Started",
+    });
+    this.installationNavSubLink = page.getByRole("link", {
+      name: "Installation",
+    });
+    this.breadcrumbGettingStartedLink = page
+      .getByLabel("Breadcrumbs")
+      .getByText("Getting Started");
+    this.breadcrumbInstallationLink = page
+      .getByLabel("Breadcrumbs")
+      .getByText("Installation");
   }
 
   async goto() {

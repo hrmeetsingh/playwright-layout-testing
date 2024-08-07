@@ -29,14 +29,14 @@ export const expect = baseExpect.extend({
         locatorBoundingBox?.y as number,
       );
       if (verticalAlignment?.allSide) {
-        baseExpect(referenceBoundingBox?.y).toBeLessThanOrEqual(
-          locatorBoundingBox?.y as number,
+        baseExpect(referenceBoundingBox?.x).toEqual(
+          locatorBoundingBox?.x as number,
         );
         baseExpect(
-          (referenceBoundingBox?.y as number) +
+          (referenceBoundingBox?.x as number) +
             (referenceBoundingBox?.width as number),
-        ).toBeLessThanOrEqual(
-          (locatorBoundingBox?.y as number) +
+        ).toEqual(
+          (locatorBoundingBox?.x as number) +
             (locatorBoundingBox?.width as number),
         );
       }

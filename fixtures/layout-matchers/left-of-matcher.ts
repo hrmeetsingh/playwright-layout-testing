@@ -29,14 +29,14 @@ export const expect = baseExpect.extend({
         locatorBoundingBox?.x as number,
       );
       if (horizontalAlignment?.allSide) {
-        baseExpect(referenceBoundingBox?.x).toBeLessThanOrEqual(
-          locatorBoundingBox?.x as number,
+        baseExpect(referenceBoundingBox?.y).toEqual(
+          locatorBoundingBox?.y as number,
         );
         baseExpect(
-          (referenceBoundingBox?.x as number) +
+          (referenceBoundingBox?.y as number) +
             (referenceBoundingBox?.height as number),
-        ).toBeLessThanOrEqual(
-          (locatorBoundingBox?.x as number) +
+        ).toEqual(
+          (locatorBoundingBox?.y as number) +
             (locatorBoundingBox?.height as number),
         );
       }
